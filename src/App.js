@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { TreeComponent } from "./Components/Tree/Tree";
+import StateComponent from "./Components/State/State";
+import { Routes, Route, Link } from "react-router-dom";
+import "antd/dist/antd.css";
+import "./index.css";
+import LifeClass from "./Components/LifeCycle/LifeClass";
+import LifeFunc from "./Components/LifeCycle/LifeFunc";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>
+        <Link to="/state">State</Link>
+        <Link to="/">Tree</Link>
+        <Link to="/class">Class</Link>
+        <Link to="/func">Func</Link>
+      </nav>
+      <section>
+        <Routes>
+          <Route path="/" element={<TreeComponent />} />
+          <Route path="state" element={<StateComponent />} />
+          <Route path="class" element={<LifeClass />} />
+          <Route path="func" element={<LifeFunc />} />
+        </Routes>
+      </section>
     </div>
   );
 }
