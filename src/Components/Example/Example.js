@@ -7,24 +7,14 @@ const NumberAndScroll = () => {
   const [number, setNumber] = useState();
   const [scroll, setScroll] = useState();
 
-  //   useEffect(async () => {
-  //     setNumber(await fetchRandomNumber());
+  useEffect(async () => {
+    setNumber(await fetchRandomNumber());
 
-  //     window.addEventListener('scroll', () => setScroll(window.scrollY));
+    window.addEventListener("scroll", () => setScroll(window.scrollY));
 
-  //     return () => window.removeEventListener('scroll', () => setScroll(window.scrollY));
-  //   });
-
-  useEffect(() => {
-    const asyncFC = async () => {
-      setNumber(await fetchRandomNumber());
-
-      window.addEventListener("scroll", () => setScroll(window.scrollY));
-    };
-    asyncFC();
     return () =>
       window.removeEventListener("scroll", () => setScroll(window.scrollY));
-  }, []);
+  });
 
   return (
     <div>

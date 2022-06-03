@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import css from "./State.module.css";
+import React, { useState, useEffect, useMemo } from "react";
 
 const square = (counter) => {
   console.log(counter);
@@ -11,8 +10,10 @@ export default function StateComponent({ title }) {
   const [text, setText] = useState("");
 
   const handleIncrement = () => {
-    setCounter(counter + 1);
-    setCounter(counter + 100);
+    setCounter((counter) => counter + 1);
+    setCounter((counter) => counter + 100);
+    // await setCounter(counter + 1);
+    // await setCounter(counter + 100);
   };
 
   const handleChange = (e) => {
@@ -20,7 +21,7 @@ export default function StateComponent({ title }) {
     setText(e.target.value);
   };
 
-  const squareVar = () => square(counter);
+  const squareVar = useMemo(() => square(counter), [counter]);
 
   return (
     <span>
