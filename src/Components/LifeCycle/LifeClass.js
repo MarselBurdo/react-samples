@@ -5,35 +5,33 @@ export default class LifeClass extends Component {
     super();
     this.state = {
       text: "",
-      counter: 0,
     };
   }
 
-  handleChange(e) {
-    // console.log(e);
-    // this.setState((prev) => ({
-    //   ...prev,
-    //   text: this.state.text.concat(e.target.value),
-    // }));
-    this.setState((prev) => ({ ...prev, counter: prev.state.counter + 1 }));
-  }
   componentDidMount() {
     console.log("Mounting");
   }
 
-  componentDidUpdate(prevState, prevProps) {
-    console.log("Update");
+  componentDidUpdate() {
+    console.log("Updating");
   }
+
   componentWillUnmount() {
     console.log("Unmounting");
   }
-  render() {
-    const { handleChange, state } = this;
 
-    console.log(state);
+  handleChange(e) {
+    // console.log(e);
+
+    console.log(this.state);
+    this.setState({ text: this.state.text.concat(e.target.value) });
+  }
+
+  render() {
+    console.log("render()");
     return (
       <>
-        <input type={"text"} onChange={handleChange} />
+        <input type={"text"} onChange={this.handleChange} />
       </>
     );
   }
