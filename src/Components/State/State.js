@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState } from "react";
+import style from "./State.module.css";
 
 const square = (counter) => {
   console.log(counter);
@@ -10,24 +11,22 @@ export default function StateComponent({ title }) {
   const [text, setText] = useState("");
 
   const handleIncrement = () => {
-    setCounter((counter) => counter + 1);
-    setCounter((counter) => counter + 100);
-    // await setCounter(counter + 1);
-    // await setCounter(counter + 100);
+    setCounter(counter + 1);
+    setCounter(counter + 100);
   };
 
   const handleChange = (e) => {
-    // console.log(e);
-    setText(e.target.value);
+    console.log(e);
+    // setText(e.target.value);
   };
 
-  const squareVar = useMemo(() => square(counter), [counter]);
+  const squareVar = square(counter);
 
   return (
     <span>
       <input type={"text"} name="currentText" onChange={handleChange} />
 
-      <div>
+      <div className={style.container}>
         <div>
           {counter}
           <button

@@ -51,5 +51,7 @@ export const TreeComponent = () => {
     );
   };
 
-  return <Tree loadData={handleLoad} treeData={tree} />;
+  return (
+    <Tree loadData={handleLoad} treeData={tree} className={styles.container} />
+  );
 };

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
 export default class LifeClass extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      text: "",
+      name: "",
     };
+    console.log("constructor()");
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -21,12 +24,8 @@ export default class LifeClass extends Component {
   }
 
   handleChange(e) {
-    // console.log(e);
-
-    console.log(this.state);
-    this.setState({ text: this.state.text.concat(e.target.value) });
+    this.setState((prev) => ({ name: prev.name.concat(e.target.value) }));
   }
-
   render() {
     console.log("render()");
     return (
