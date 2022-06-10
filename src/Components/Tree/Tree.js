@@ -14,25 +14,19 @@ import API from "./api";
 
 const updateNode = (key, list, children) => {
   // code here...
-
+  console.log({ key, list, children });
   // рекурсия
+
   const rec = (el) => {
     if (el.key === key) {
-      console.log({ key, list, children });
       return {
         ...el,
         children: children,
       };
     }
-
-    if (el.children) {
-      return {
-        ...el,
-        children: updateNode(key, el.children, children),
-      };
-    }
     return el;
   };
+
   return list.map(rec);
 };
 
