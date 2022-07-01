@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 
 export default function LifeFunc() {
   const [counter, setCounter] = useState(0);
-  const bears = useRef(null);
-  let users = 100;
+  const leopards = useRef("cool");
+  let users = 1000;
 
   useEffect(() => {
     console.log("Mounting like componentDidMount");
@@ -11,7 +11,7 @@ export default function LifeFunc() {
 
   useEffect(() => {
     console.log("Updating like componentDidUpdate");
-    bears.current = bears.current + 25;
+    leopards.current = leopards.current + 100;
   }, [counter]);
 
   useEffect(() => {
@@ -21,22 +21,19 @@ export default function LifeFunc() {
   }, []);
 
   useEffect(() => {
-    console.log("Update useRef");
-  }, [bears]);
+    console.log("useEffect REF", leopards);
+  }, [leopards.current]);
 
   useEffect(() => {
-    console.log("Update users");
+    console.log("USERS");
   }, [users]);
 
-  console.log("render()", { bears });
+  console.log("render");
 
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      setCounter((prev) => prev + 1);
-    },
-    [counter]
-  );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCounter(counter + 1);
+  };
 
   return (
     <div>
@@ -56,7 +53,7 @@ export default function LifeFunc() {
       <button
         type="button"
         onClick={() => {
-          users += 100;
+          users += 1000;
           console.log({ users });
         }}
       >

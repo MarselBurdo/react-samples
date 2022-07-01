@@ -4,11 +4,9 @@ export default class LifeClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      text: "Hi",
     };
-    console.log("constructor()");
-
-    this.handleChange = this.handleChange.bind(this);
+    console.log("constructor");
   }
 
   componentDidMount() {
@@ -23,14 +21,16 @@ export default class LifeClass extends Component {
     console.log("Unmounting");
   }
 
-  handleChange(e) {
-    this.setState((prev) => ({ name: prev.name.concat(e.target.value) }));
-  }
+  handleChange = (e) => {
+    this.setState((prev) => ({ text: prev.text.concat(e.target.value) }));
+  };
+
   render() {
-    console.log("render()");
+    console.log("render");
+
     return (
       <>
-        <input type={"text"} onChange={this.handleChange} />
+        <input name="text" type={"text"} onChange={this.handleChange} />
       </>
     );
   }

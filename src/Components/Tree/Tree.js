@@ -15,22 +15,27 @@ import API from "./api";
 const updateNode = (key, list, children) => {
   // code here...
   console.log({ key, list, children });
-  // рекурсия
 
-  const rec = (el) => {
+  const executor = (el) => {
     if (el.key === key) {
       return {
         ...el,
-        children: children,
+        children,
+      };
+    }
+
+    if (el.children) {
+      return {
+        ...el,
+        children: updateNode(key, el.children, children),
       };
     }
     return el;
   };
 
-  return list.map(rec);
+  return list.map(executor);
 };
 
-// console.log(styles);
 export const TreeComponent = () => {
   const [tree, setTree] = React.useState([]);
   React.useEffect(() => {

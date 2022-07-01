@@ -1,10 +1,5 @@
 import React, { useMemo, useState } from "react";
 
-const square = (counter) => {
-  console.log(counter);
-  return counter ** 2;
-};
-
 export default function StateComponent({ title }) {
   const [counter, setCounter] = useState(0);
   const [text, setText] = useState("");
@@ -12,17 +7,15 @@ export default function StateComponent({ title }) {
   const handleIncrement = () => {
     setCounter((counter) => counter + 1);
     setCounter((counter) => counter + 100);
-
-    //     if (Number.isInteger(counter)){
-    // setCounter(counter + 1);
-    //     } else if (){
-
-    //     }
   };
 
   const handleChange = (e) => {
-    // console.log(e);
+    console.log("useCallback");
     setText(e.target.value);
+  };
+  const square = (counter) => {
+    console.log(counter);
+    return counter ** 2;
   };
 
   const squareVar = useMemo(() => square(counter), [counter]);
