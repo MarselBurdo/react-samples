@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 
 export default function LifeFunc() {
   const [counter, setCounter] = useState(0);
-  const leopards = useRef("cool");
+  const wolf = useRef("cool");
   let users = 1000;
 
   useEffect(() => {
@@ -10,31 +10,30 @@ export default function LifeFunc() {
   }, []);
 
   useEffect(() => {
-    console.log("Updating like componentDidUpdate");
-    leopards.current = leopards.current + 100;
+    console.log("Update like componentDidUpdate");
+    wolf.current = wolf.current + 100;
   }, [counter]);
 
   useEffect(() => {
     return () => {
-      console.log("Unmounting like componentWillUnmount");
+      console.log("Unmount like componentWillUnmount");
     };
   }, []);
 
   useEffect(() => {
-    console.log("useEffect REF", leopards);
-  }, [leopards.current]);
+    console.log("useEffect WOLF!!!!!!!", wolf);
+  }, [wolf]);
 
   useEffect(() => {
-    console.log("USERS");
+    console.log("users", { users });
   }, [users]);
-
-  console.log("render");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setCounter(counter + 1);
   };
 
+  console.log("render()");
   return (
     <div>
       <form
@@ -54,7 +53,7 @@ export default function LifeFunc() {
         type="button"
         onClick={() => {
           users += 1000;
-          console.log({ users });
+          console.log("onClick", { users });
         }}
       >
         Inc Tmp
@@ -62,13 +61,3 @@ export default function LifeFunc() {
     </div>
   );
 }
-
-// возможный способ использования размонтироваиня компонента
-// useEffect(() => {
-//     const controller = new AbortController()
-//     fetch('url',{body:JSON.stringify({signal:controller.signal})})
-//   return () => {
-//     console.log("Unmount");
-//     controller.abort()
-//   };
-// }, []);

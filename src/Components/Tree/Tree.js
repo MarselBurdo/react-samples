@@ -15,21 +15,20 @@ import API from "./api";
 const updateNode = (key, list, children) => {
   // code here...
   console.log({ key, list, children });
-
   const executor = (el) => {
     if (el.key === key) {
       return {
         ...el,
-        children,
+        children: children,
       };
     }
-
     if (el.children) {
       return {
         ...el,
         children: updateNode(key, el.children, children),
       };
     }
+
     return el;
   };
 
