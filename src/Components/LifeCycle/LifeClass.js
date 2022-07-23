@@ -3,28 +3,27 @@ import React, { Component } from "react";
 export default class LifeClass extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: "new",
-    };
+    this.state = { text: "" };
     this.handleChange = this.handleChange.bind(this);
+
     console.log("constructor()");
   }
 
   componentDidMount() {
-    console.log("Mounting end");
+    console.log("componentDidMount()");
   }
 
   componentDidUpdate() {
-    console.log("Update end");
+    console.log("componentDidUpdate()");
   }
 
   componentWillUnmount() {
-    console.log("Unmounting end");
+    console.log("componentWillUnmount()");
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState((prev) => ({ text: prev.text.concat(e.target.value) }));
-  }
+  };
 
   render() {
     console.log("render()");

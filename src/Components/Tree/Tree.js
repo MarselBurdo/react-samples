@@ -15,6 +15,7 @@ import API from "./api";
 const updateNode = (key, list, children) => {
   // code here...
   console.log({ key, list, children });
+
   const executor = (el) => {
     if (el.key === key) {
       return {
@@ -22,6 +23,7 @@ const updateNode = (key, list, children) => {
         children: children,
       };
     }
+
     if (el.children) {
       return {
         ...el,
