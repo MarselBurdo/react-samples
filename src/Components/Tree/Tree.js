@@ -14,27 +14,8 @@ import API from "./api";
 
 const updateNode = (key, list, children) => {
   // code here...
-  console.log({ key, list, children });
 
-  const executor = (el) => {
-    if (el.key === key) {
-      return {
-        ...el,
-        children: children,
-      };
-    }
-
-    if (el.children) {
-      return {
-        ...el,
-        children: updateNode(key, el.children, children),
-      };
-    }
-
-    return el;
-  };
-
-  return list.map(executor);
+  return list;
 };
 
 export const TreeComponent = () => {
@@ -52,6 +33,11 @@ export const TreeComponent = () => {
   };
 
   return (
-    <Tree loadData={handleLoad} treeData={tree} className={styles.container} />
+    <Tree
+      loadData={handleLoad}
+      treeData={tree}
+      className={styles.container}
+      onClick={console.log}
+    />
   );
 };

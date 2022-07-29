@@ -1,39 +1,39 @@
-import React, { useState, useRef, useEffect } from "react";
-
-let users = 1000;
+import React, { useEffect, useState, useRef } from "react";
 
 export default function LifeFunc() {
   const [counter, setCounter] = useState(0);
-  const wolf = useRef("cool");
+  const foxes = useRef("cool");
+  let users = 1000;
 
   useEffect(() => {
-    console.log("useEfffect like a componentDidMount()");
+    console.log("Like a componentDidMount()");
   }, []);
 
   useEffect(() => {
-    console.log("useEfffect like a componentDidUpdate()");
-    wolf.current = wolf.current + 100;
+    console.log("Like a componentDidUpdate()");
+    foxes.current = foxes.current + 100;
   }, [counter]);
 
   useEffect(() => {
     return () => {
-      console.log("useEfffect like a componentWillUnmount()");
+      console.log("Like a componen23tWillUnmount()");
     };
   }, []);
 
   useEffect(() => {
-    console.log("useEffect WOLF", { wolf });
-  }, [wolf.current]);
+    console.log("UseEffect FOXES!!!!!!", { foxes });
+  }, [foxes]);
 
   useEffect(() => {
-    console.log("useEffect USERS", { users });
+    console.log("UseEffect users", { users });
   }, [users]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setCounter(counter + 1);
+    users += 1000;
   };
-
+  console.log(users);
   console.log("render()");
   return (
     <div>

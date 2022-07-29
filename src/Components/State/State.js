@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 
 const square = (counter) => {
   console.log(counter);
@@ -12,13 +12,14 @@ export default function StateComponent({ title }) {
   const handleIncrement = () => {
     setCounter((counter) => counter + 1);
     setCounter((counter) => counter + 100);
-    // await setCounter(counter + 1);
-    // await setCounter(counter + 100);
   };
 
-  const handleChange = (e) => {
-    setText(e.target.value);
-  };
+  const handleChange = useCallback(
+    (e) => {
+      setText(text.concat(e.target.value));
+    },
+    [text]
+  );
 
   const squareVar = useMemo(() => square(counter), [counter]);
 
